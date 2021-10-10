@@ -1,0 +1,36 @@
+Read the given challenge-json file containing the initial game state
+and the goal.
+
+Create a list of base items. These items are:
+ - All items the player is able to produce for free (The player is 
+   a factory (see factory.json). Every recipe that matches one of the
+   player's "crafting-categories" and that does not require any "ingre-
+   dients" can be produced for free)
+ - All items that can be produced using factories that are available 
+   when starting the challenge ("initial-factories"). (...if these items
+   can be produced using "free" items (see above) )
+
+ - Create a tree structure using the goal item as the root node. (If 
+   there are multiple goal items create multiple trees...)
+ - Add a child node for every requirement that is necessary to reach 
+   this (root) node. (e.g. one each for all necessary items, one for 
+   the factory, one each for all necessary technologies, one for 
+   the recipe).
+ - For each of these child nodes, add all requirements they need in 
+   order to be completeable.
+ - Repeat the previous step until all leaf nodes are either base items
+   or "initial-factories"
+
+Then, iterate through the tree bottom-up to create a sequence of events
+to reach the root node (aka the "goal-item"):
+ - Produce all items, build all factories, research all technologies, 
+   unlock all recipies specified in the lowest layer of the tree only, by
+   raising the according events at the respective time.
+ - After all of these are done, continue to the second layer (from the
+   bottom) of the tree and produce everything specified there. Do this
+   for each layer until you reach the root node.
+ - As there is no time constraint / As we don't have to optimize the 
+   build chain, all constructions can be done sequentially. (e.g. first
+   raise event A, then, at a timestamp after A finished, raise event B, 
+   although they could've been executed simultaneously)
+

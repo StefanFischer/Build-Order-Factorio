@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -G "CodeBlocks - MinGW Makefiles" C:\Users\stefa\Uni\AdvPT\Project\Git-project\advpt-project
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/stefa/Uni/AdvPT/Project/Git-project/advpt-project
